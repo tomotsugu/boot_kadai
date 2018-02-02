@@ -1,0 +1,46 @@
+<p id="notice"><%= notice %></p>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#gnavi">
+        <span class="sr-only">Bootstrap</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Bootstrap
+
+      </a>
+    </div>
+    <div id="gnavi" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li><%= link_to "TOP", tops_path %></li>
+        <li><%= link_to "MENU1", tops_path %></li>
+        <li><%= link_to "MENU2", tops_path %></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<h1>Listing Blogs</h1>
+
+<div class="container">
+  <div id="new-blog-link">
+    <%= link_to '新規ブログを作成する', new_bs_blog_path %>
+  </div>
+  
+  <div class="row">
+  <% @bs_blogs.each do |bs_blog| %>
+    <div class="col-xs-12 col-md-6 blog-panel">
+      <h2><%= bs_blog.title %></h2>
+      <p><%= bs_blog.email %></p>
+      <p><%= bs_blog.content %></p>
+      <div class="blog-links">
+        <%= link_to 'Show', bs_blog, class: 'btn btn-default' %>
+        <%= link_to 'Edit', edit_bs_blog_path(bs_blog), class: 'btn btn-info' %> 
+        <%= link_to 'Destroy', bs_blog, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+      </div>
+    </div>
+  <% end %>
+  </div>
+</div>
